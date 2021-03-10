@@ -1,0 +1,291 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.main-container {
+  padding: 0 15%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 15%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.nav-menu {
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.all-customers button {
+  background: #f2f2f2;
+  border-radius: 5px;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.add-customers button {
+  margin-left: 1rem;
+  background: #000;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.add-customers button .fas {
+  padding-right: 10px;
+}
+
+.card-container {
+  display: flex;
+  padding-top: 8rem;
+  justify-content: space-between;
+}
+
+.card {
+  text-align: center;
+  padding: 5% 2%;
+  width: 32%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-1 h1 {
+  font-size: 3.75rem;
+  font-weight: 700;
+  line-height: 63.6px;
+}
+
+.card-1 p {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 22.5px;
+}
+
+.card-2 h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 63.6px;
+}
+
+.card-2 p {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 22.5px;
+}
+
+.card-3 {
+  padding: 2rem;
+}
+
+.card-3 ul li {
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  align-items: center;
+}
+
+.card3-name {
+  flex: 0 0 50%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.highlight {
+  height: 6px;
+  width: 6px;
+  border-radius: 70%;
+  display: inline-block;
+  margin-right: 10px;
+  /* flex: 1; */
+}
+
+.card3-location {
+  flex: 0 0 30%;
+  text-align: left;
+}
+
+.mid-text {
+  margin-top: 5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 22.5px;
+}
+
+.customer-container {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  line-height: 22px;
+  font-weight: 500;
+  color: #8c8c8c;
+  cursor: pointer;
+}
+
+.customer-container ul .list-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 13px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.customer-container ul .list-container button {
+  background: #e9e9e9;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border: none;
+  color: #515151;
+  line-height: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.customer-container ul .list-container:hover {
+  color: #000;
+}
+
+.customer-container ul .list-container button:hover {
+  color: #fff;
+  background: #45c779;
+}
+
+.customer-form {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  background: #c4c4c4;
+  opacity: 0.9;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-container {
+  background: #ffffff;
+  width: 35%;
+  border-radius: 6px;
+  padding: 1.8rem 2.8rem;
+  z-index: 999;
+}
+
+.form div {
+  margin-top: 0.2rem;
+}
+
+.form-head {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.form-head p {
+  font-size: 0.95rem;
+  line-height: 15.9px;
+  font-weight: 700;
+}
+
+.form-head button {
+  font-size: 0.8rem;
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  padding: 0.2rem 0.6rem;
+}
+
+.name-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
+input {
+  background: #f1f1f1;
+  border-radius: 5px;
+  width: 10rem;
+  padding: 0.6rem 0.8rem;
+  border: none;
+}
+
+select {
+  background: #f1f1f1;
+  border-radius: 5px;
+  width: 10rem;
+  padding: 0.6rem 0.8rem;
+  border: none;
+}
+
+::placeholder {
+  color: #b8afaf;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.email-container {
+  padding-bottom: 1rem;
+}
+
+.email-container input {
+  width: 100%;
+}
+
+.phone-location-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.project-money-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+}
+
+.add-btn {
+  padding-bottom: 1rem;
+}
+
+.add-btn button {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: #45c779;
+  border-radius: 5px;
+  border: none;
+}
