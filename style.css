@@ -330,3 +330,87 @@ select {
   font-size: 15px;
   line-height: 22px;
 }
+
+/* CUSTOMER DETAIL */
+
+.customer-detail {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.customer-display-blur {
+  width: 100%;
+  height: 100%;
+  background: #c4c4c4;
+  opacity: 0.9;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.customer-detail-container {
+  position: absolute;
+  background-color: #fff;
+  width: 35%;
+  height: 100%;
+  right: 0;
+  padding: 2rem;
+}
+
+.customer-detail-close button {
+  font-size: 0.8rem;
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 3rem;
+}
+
+.customer-detail-number {
+  display: flex;
+  margin: 0 auto;
+  background-color: #45c779;
+  width: 141px;
+  height: 141px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-data {
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.customer-data .customer {
+  display: flex;
+}
+
+.customer-data .customer p:first-child {
+  flex: 0 0 30%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.customer-data .customer p:nth-child(2) {
+  flex: 0 0 50%;
+  text-align: left;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+hr {
+  margin: 0.5rem 0;
+  border: 1px solid #b9b9b9;
+}
