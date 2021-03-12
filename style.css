@@ -6,9 +6,11 @@
 }
 
 .main-container {
+  /* position: relative; */
   padding: 0 15%;
 }
 
+/* NAVBAR */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -48,6 +50,8 @@
 .add-customers button .fas {
   padding-right: 10px;
 }
+
+/* CARDS */
 
 .card-container {
   display: flex;
@@ -92,6 +96,14 @@
   padding: 2rem;
 }
 
+.card-3 .top-customer {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 22.5px;
+  text-align: left;
+}
+
 .card-3 ul li {
   display: flex;
   font-size: 0.8rem;
@@ -114,7 +126,6 @@
   border-radius: 70%;
   display: inline-block;
   margin-right: 10px;
-  /* flex: 1; */
 }
 
 .card3-location {
@@ -122,8 +133,9 @@
   text-align: left;
 }
 
+/* CUSTOMERS OVERVIEW*/
 .mid-text {
-  margin-top: 5rem;
+  margin-top: 3rem;
   font-size: 0.9rem;
   font-weight: bold;
   line-height: 22.5px;
@@ -168,6 +180,7 @@
   background: #45c779;
 }
 
+/* CUSTOMER FORM */
 .customer-form {
   width: 100%;
   height: 100%;
@@ -288,4 +301,32 @@ select {
   background: #45c779;
   border-radius: 5px;
   border: none;
+}
+
+/* CUSTOMER LIST */
+
+.customer-list-container {
+  margin-top: 8rem;
+  font-size: 0.9rem;
+  line-height: 22px;
+  font-weight: 500;
+  color: #8c8c8c;
+  cursor: pointer;
+  display: none;
+}
+
+.customer-search input {
+  margin: 0 auto;
+  display: block;
+  width: 60%;
+  background: #f2f2f2;
+  border-radius: 50px;
+  padding: 1rem 1rem;
+  margin-bottom: 3rem;
+}
+
+.customer-search input::placeholder {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
 }
