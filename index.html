@@ -43,7 +43,7 @@
           <div class="all-customers">
             <button>All customers</button>
           </div>
-          <div class="add-customers">
+          <div class="add-customers" id="add-customer">
             <button><i class="fas fa-user-plus"></i>Add customer</button>
           </div>
         </div>
@@ -91,56 +91,15 @@
             </p>      
           </div>
           <div class ="customer-container">
-            <ul>
-              <li class ="list-container">
+            <ul id="dynamic-list">
+              <!-- <li class ="list-container">
                 <p>KM25R</p>
                 <p>Leslie Clinton</p>
                 <p>08093269378</p>
                 <p>leslieclinton@gmail.com</p>
-                <button>view</button>
-              </li>
-              <li class ="list-container">
-                <p>KM24R</p>
-                <p>Chuka Uzoho</p>
-                <p>08078826978</p>
-                <p>chukauzoho@gmail.com</p>
-                <button>view</button>
-              </li>
-              <li class ="list-container">
-                <p>KM23R</p>
-                <p>Goodness Uche</p>
-                <p>08045559378</p>
-                <p>goodnessuche@gmail.com</p>
-                <button>view</button>
-              </li>
-              <li class ="list-container">
-                <p>KM22R</p>
-                <p>Leslie Clinton</p>
-                <p>08093269378</p>
-                <p>leslieclinton@gmail.com</p>
-                <button>view</button>
-              </li>
-              <li class ="list-container">
-                <p>KM22R</p>
-                <p>Leslie Clinton</p>
-                <p>08093269378</p>
-                <p>leslieclinton@gmail.com</p>
-                <button>view</button>
-              </li>
-              <li class ="list-container">
-                <p>KM22R</p>
-                <p>Leslie Clinton</p>
-                <p>08093269378</p>
-                <p>leslieclinton@gmail.com</p>
-                <button>view</button>
-              </li>
-              <li class ="list-container">
-                <p>KM22R</p>
-                <p>Leslie Clinton</p>
-                <p>08093269378</p>
-                <p>leslieclinton@gmail.com</p>
-                <button>view</button>
-              </li>
+                <button class ="view-btn">view</button>
+              </li> -->
+              
             </ul>
           </div>
         </section>
@@ -209,13 +168,13 @@
   
 
     <!-- CUSTOMER FORM -->
-    <div class="customer-form">
+    <div class="customer-form" >
     <div class="modal-overlay"></div>
     <div class="form-container">
         <form action="" class="form">
           <div class="form-head">
             <p>Add a customer</p>
-            <button>Close</button>
+            <button type="button" id="close-form">Close</button>
           </div>
           <div class="name-container">
             <div class="firstname-container ">
@@ -307,7 +266,7 @@
           </div>
         </div>
         <div class="add-btn">
-          <button>
+          <button id="add-customer-btn">
             Add customer
           </button>
         </div>

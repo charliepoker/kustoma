@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .main-container {
@@ -159,7 +159,7 @@
   margin-bottom: 0.5rem;
 }
 
-.customer-container ul .list-container button {
+.customer-container ul .list-container .view-btn {
   background: #e9e9e9;
   border-radius: 50px;
   font-size: 0.75rem;
@@ -175,7 +175,7 @@
   color: #000;
 }
 
-.customer-container ul .list-container button:hover {
+.customer-container ul .list-container .view-btn:hover {
   color: #fff;
   background: #45c779;
 }
