@@ -5,6 +5,14 @@
   font-family: 'Poppins', sans-serif;
 }
 
+input {
+  display: block;
+}
+
+select {
+  display: block;
+}
+
 .main-container {
   /* position: relative; */
   padding: 0 15%;
@@ -20,6 +28,7 @@
   left: 0;
   width: 100%;
   background-color: #fff;
+  display: flex;
 }
 
 .nav-menu {
@@ -29,6 +38,9 @@
   line-height: 18px;
 }
 
+.nav-menu-mobile {
+  display: none;
+}
 .see-overview button {
   background: #f2f2f2;
   border-radius: 5px;
@@ -61,9 +73,11 @@
 }
 
 /* CARDS */
-/* .customer-overview {
-  display: none;
-} */
+.customer-overview {
+  /* background-color: red; */
+  transform: translatex(-100px, 0);
+  transition: all 0.25;
+}
 
 .card-container {
   display: flex;
@@ -203,6 +217,9 @@
   align-items: center;
   justify-content: center;
   display: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease-in;
 }
 
 .modal-overlay {
@@ -254,13 +271,13 @@
   padding-bottom: 1rem;
 }
 
-.firstname-container .error input {
+/* .firstname-container .error input {
   border: 2px solid #e74c3c;
 }
 
 .firstname-container .success input {
   border: 2px solid #45c779;
-}
+} */
 
 label {
   display: block;
@@ -299,7 +316,7 @@ select {
   width: 100%;
 }
 
-/* .email-container.error input {
+.email-container.error input {
   border: 2px solid #e74c3c;
 }
 
@@ -310,8 +327,8 @@ select {
 small {
   color: #e74c3c;
   font-size: 12px;
-  visibility: hidden;
-} */
+  /* visibility: hidden; */
+}
 
 .phone-location-container {
   display: flex;
@@ -447,4 +464,193 @@ small {
 hr {
   margin: 0.5rem 0;
   border: 1px solid #b9b9b9;
+}
+
+@media screen and (max-width: 480px) {
+  .nav-container-mobile {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu-mobile {
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+
+  .see-overview-mobile button {
+    background: #f2f2f2;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 6px;
+    cursor: pointer;
+  }
+
+  .all-customers-mobile button {
+    background: #f2f2f2;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 6px;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+
+  .add-customers-mobile button {
+    margin-left: 6px;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 6px;
+    cursor: pointer;
+  }
+
+  .add-customers-mobile button .fas {
+    padding-right: 2px;
+  }
+
+  .card-container {
+    margin-top: -3rem;
+    display: block;
+    width: 100%;
+  }
+  .card {
+    text-align: center;
+    /* padding: 5% 2%; */
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+  }
+  .customer-form {
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.2s ease-in;
+  }
+
+  .form-container {
+    background: #ffffff;
+    width: 100%;
+    border-radius: 6px;
+    padding: 1.8rem 2.8rem;
+    z-index: 999;
+  }
+
+  .form div {
+    margin-top: 0.2rem;
+  }
+
+  .form-head {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+
+  .form-head p {
+    font-size: 0.95rem;
+    line-height: 15.9px;
+    font-weight: 700;
+  }
+
+  .form-head button {
+    font-size: 0.8rem;
+    background: #000;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .name-container {
+    display: block;
+    justify-content: space-between;
+  }
+
+  label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding-bottom: 5px;
+  }
+
+  input {
+    background: #f1f1f1;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: none;
+  }
+
+  select {
+    background: #f1f1f1;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: none;
+  }
+
+  ::placeholder {
+    color: #b8afaf;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .email-container {
+    padding-bottom: 1rem;
+  }
+
+  .email-container input {
+    width: 100%;
+  }
+
+  .email-container.error input {
+    border: 2px solid #e74c3c;
+  }
+
+  .email-container.success input {
+    border: 2px solid #45c779;
+  }
+
+  small {
+    color: #e74c3c;
+    font-size: 12px;
+    /* visibility: hidden; */
+  }
+
+  .phone-location-container {
+    display: block;
+    padding-bottom: 1rem;
+  }
+
+  .project-money-container {
+    display: block;
+    padding-bottom: 2rem;
+  }
+
+  .add-btn {
+    padding-bottom: 1rem;
+  }
+
+  .add-btn button {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    background: #45c779;
+    border-radius: 5px;
+    border: none;
+  }
 }

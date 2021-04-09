@@ -1,4 +1,5 @@
 const showModalBtn = document.getElementById('add-customer');
+const showModalBtnMobile = document.querySelector('.add-customers-mobile');
 const showOverview = document.querySelector('.see-overview');
 const customerForm = document.querySelector('.customer-form');
 const closeFormButton = document.getElementById('close-form');
@@ -24,27 +25,34 @@ const allCustomerbtn = document.querySelector('.all-customers button');
 const allCustomerList = document.querySelector('.customer-list-container ');
 const customerOverview = document.querySelector('.customer-overview');
 const customerOverviewUl = document.querySelector('.all-customer-dynamic-list');
+const topCustomerUl = document.querySelector('.top-customer-dynamic-list');
 
-// Form validation
-// function validateForm(e) {
-//   e.preventDefault();
-//   if(firstName.value==""){
-//     alert("Please enter")
-//   }
-// }
-
-// console.log(showOverview);
 const customerData = [];
 let recentCustomer = [];
+
+window.onload = () => {
+  if (customerData.length === 0) {
+    showForm();
+  } else {
+    closeForm();
+  }
+};
 
 // Open and Close add customer form
 function showForm() {
   customerForm.style.display = 'flex';
+  setTimeout(() => {
+    customerForm.style.transform = 'scale(1)';
+    customerForm.style.opacity = '1';
+  }, 200);
 }
 function closeForm() {
-  customerForm.style.display = 'none';
+  customerForm.style.opacity = '0';
+  customerForm.style.transform = 'scale(.85)';
+  setTimeout(() => {
+    customerForm.style.display = 'none';
+  }, 500);
 }
-
 // Close customer detail modal
 function closeDetailModal() {
   customerDetail.style.display = 'none';
@@ -56,17 +64,62 @@ function displayOverview() {
   allCustomerList.style.display = 'none';
 }
 
+function validation() {}
+
 //Add a customer
-function addCustomerData() {
-  //  e.preventDefault(); // To stop the form from submitting
+function addCustomerData(e) {
+  e.preventDefault(); // To stop the form from submitting
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    // if (firstName.value === '') {
-    //   firstName.style.border =  "2px solid #e74c3c"
+  //First name validation
+  if (firstName.value === '') {
+    firstName.nextElementSibling.textContent = 'Firstname is required';
+    return;
+  } else if (!/^[A-Z]+$/i.test(firstName.value)) {
+    firstName.nextElementSibling.textContent = 'Use only letters';
+    return;
+  } else {
+    firstName.nextElementSibling.textContent = '';
+  }
 
-    // }
-  });
+  //Last name validation
+  if (lastName.value === '') {
+    lastName.nextElementSibling.textContent = 'lastname is required';
+    return;
+  } else if (!/^[A-Z]+$/i.test(lastName.value)) {
+    lastName.nextElementSibling.textContent = 'Use only letters';
+    return;
+  } else {
+    firstName.nextElementSibling.textContent = '';
+  }
+  // Email validation
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (email.value === '') {
+    email.nextElementSibling.textContent = 'email is required';
+    return;
+  } else if (!re.test(String(email.value).toLowerCase())) {
+    email.nextElementSibling.textContent = 'xyz@email.com';
+    return;
+  }
+  // Phone number validation
+  if (phoneNumber.value === '') {
+    phone.nextElementSibling.textContent = 'phone number is required';
+    return;
+  }
+  // Location validation
+  if (state.value === '--Select State--') {
+    state.nextElementSibling.textContent = 'location is required';
+    return;
+  }
+  // Project validation
+  if (project.value === '--Select Project--') {
+    project.nextElementSibling.textContent = 'project is required';
+    return;
+  }
+  // Money validation
+  if (money.value === '') {
+    money.nextElementSibling.textContent = 'amount is required';
+    return;
+  }
 
   //generate unique customer userID
   let customerId = `KM${customerData.length}R`;
@@ -86,53 +139,16 @@ function addCustomerData() {
   };
 
   addRecentCustomers();
+  closeForm();
 
   // push into an empty array
   customerData.push(customer);
   totalCustomers();
 
-  // sort the timestamp
-  const customerTimeStamp = customerData.sort(function (x, y) {
-    return y.time - x.time;
-  });
-
   // reset the form
   form.reset();
-  //store to local storage
-  localStorage.setItem('myCustomerlist', JSON.stringify(customerData));
-
-  // display allcustomer
-  function allCustomer() {
-    customerOverviewUl.innerHTML = null;
-    customerData.forEach(customer => {
-      // let customerId = `KM${customerData.length}R`;
-      customerOverviewUl.innerHTML = `<li class ="list-container">
-                <p>${customer.id}</p>
-                <p>${customer.firstname} ${customer.lastname}</p>
-                <p>${customer.phone}</p>
-                <p>${customer.email}</p>
-                <button class ="view-btn">view</button>
-              </li> 
-              ${customerOverviewUl.innerHTML}`;
-
-      // customerOverviewUl.insertAdjacentHTML('beforeend', li);
-    });
-  }
 
   allCustomer();
-
-  // Display top customer
-  // function displayTopCustomer() {
-  //   let sortedCustomer = [];
-  //   const topCustomer = customerData.sort(function (a, b) {
-  //     return b.money - a.money;
-  //   });
-  //   sortedCustomer.push(topCustomer);
-
-  //   console.log(sortedCustomer[0]);
-  // }
-
-  // console.log(splicedCustomer);
 
   // Total Amount of money
   const totalRevenue = customerData.reduce(function (sum, customer) {
@@ -143,15 +159,38 @@ function addCustomerData() {
   //Close modal
   closeForm();
 
-  // Display total numbers of  Customers
+  //store to local storage
+  localStorage.setItem('myCustomerlist', JSON.stringify(customerData));
 
-  function totalCustomers() {
-    const numberOfCustomers = customerData.length;
-    card1.innerHTML = numberOfCustomers;
+  displayTopCustomer();
+}
 
-    if (numberOfCustomers > 1) {
-      card1Paragraph.innerHTML = 'Customers';
-    }
+// display allcustomer
+function allCustomer() {
+  customerOverviewUl.innerHTML = null;
+  customerData.forEach(customer => {
+    // let customerId = `KM${customerData.length}R`;
+    customerOverviewUl.innerHTML = `<li class ="list-container">
+                <p>${customer.id}</p>
+                <p>${customer.firstname} ${customer.lastname}</p>
+                <p>${customer.phone}</p>
+                <p>${customer.email}</p>
+                <button class ="view-btn">view</button>
+              </li> 
+              ${customerOverviewUl.innerHTML}`;
+
+    // customerOverviewUl.insertAdjacentHTML('beforeend', li);
+  });
+}
+
+// Display total numbers of  Customers
+
+function totalCustomers() {
+  const numberOfCustomers = customerData.length;
+  card1.innerHTML = numberOfCustomers;
+
+  if (numberOfCustomers > 1) {
+    card1Paragraph.innerHTML = 'Customers';
   }
 }
 
@@ -175,6 +214,44 @@ function addRecentCustomers() {
   recentCustomer.push(li);
 
   ul.insertAdjacentHTML('afterbegin', li);
+
+  let allChilderen = Array.from(ul.children);
+
+  allChilderen.forEach((child, index) => {
+    if (index > 3) {
+      child.style.display = 'none';
+    }
+  });
+}
+
+// Display top customer
+function displayTopCustomer() {
+  let sortedCustomer = [];
+  const topCustomer = customerData.sort(function (a, b) {
+    return b.money - a.money;
+  });
+  sortedCustomer.push(...topCustomer);
+
+  topCustomerUl.innerHTML = '';
+  sortedCustomer.forEach(customer => {
+    const template = `<li>
+
+                <p class="card3-name"><span class="highlight" style="background:green"></span>${customer.firstname} ${customer.lastname}</p>
+                <p class="card3-location"> &#8358 ${customer.money}</p>
+              </li>`;
+
+    topCustomerUl.insertAdjacentHTML('beforeend', template);
+  });
+
+  let allChilderen = Array.from(topCustomerUl.children);
+
+  allChilderen.forEach((child, index) => {
+    if (index > 2) {
+      child.style.display = 'none';
+    }
+  });
+
+  // console.log(sortedCustomer);
 }
 
 // Event delegation methods to show customer details
@@ -234,6 +311,7 @@ function toggleDone(e) {
 
 //Event Handlers
 showModalBtn.addEventListener('click', showForm);
+showModalBtnMobile.addEventListener('click', showForm);
 showOverview.addEventListener('click', displayOverview);
 closeFormButton.addEventListener('click', closeForm);
 addCustomerBtn.addEventListener('click', addCustomerData);
