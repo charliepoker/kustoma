@@ -482,6 +482,10 @@ hr {
     display: none;
   }
 
+  .main-container {
+    padding: 0 7%;
+  }
+
   .nav-menu-mobile {
     display: flex;
     font-size: 12px;

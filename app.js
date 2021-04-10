@@ -233,10 +233,26 @@ function displayTopCustomer() {
   sortedCustomer.push(...topCustomer);
 
   topCustomerUl.innerHTML = '';
-  sortedCustomer.forEach(customer => {
+  sortedCustomer.forEach((customer, index) => {
+    const joinName = customer.firstname.concat(customer.lastname);
+    const nameSplit = joinName.split('');
+    let bgColor;
+
+    if (nameSplit.length > 13) {
+      customer.lastname = '...';
+    }
+
+    if (index === 0) {
+      bgColor = 'green';
+    } else if (index === 1) {
+      bgColor = 'orange';
+    } else {
+      bgColor = 'red';
+    }
+
     const template = `<li>
 
-                <p class="card3-name"><span class="highlight" style="background:green"></span>${customer.firstname} ${customer.lastname}</p>
+                <p class="card3-name"><span class="highlight" style="background:${bgColor}"></span>${customer.firstname} ${customer.lastname}</p>
                 <p class="card3-location"> &#8358 ${customer.money}</p>
               </li>`;
 
@@ -250,8 +266,6 @@ function displayTopCustomer() {
       child.style.display = 'none';
     }
   });
-
-  // console.log(sortedCustomer);
 }
 
 // Event delegation methods to show customer details
